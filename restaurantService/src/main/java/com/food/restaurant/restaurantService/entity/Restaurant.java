@@ -20,9 +20,10 @@ public class Restaurant {
     @Column(name ="Restaurant_Name")
     private String name;
 
-    @Column(name = "OrderID")
-    private Long orderId;
-
     @Column(name = "Restaurant_Area")
     private String area;
+
+    @OneToOne(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    private MenuCard menuCard;
+
 }

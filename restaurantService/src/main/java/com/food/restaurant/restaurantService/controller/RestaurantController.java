@@ -18,18 +18,12 @@ public class RestaurantController {
     @PostMapping("/addRestaurant")
     public ResponseEntity<String> addRestaurant(@RequestBody RestaurantDto restaurantDto){
         restaurantServiceImpl.addRestaurant(restaurantDto);
-        return ResponseEntity.ok("Restaurant added successfully");
+        return ResponseEntity.status(201).body("Restaurant Added Successfully");
     }
 
     @GetMapping("/getRestaurant/{id}")
     public ResponseEntity<RestaurantDto> getRestaurant(@PathVariable Long id){
         RestaurantDto restaurantDto = restaurantServiceImpl.getRestaurantById(id);
-        return ResponseEntity.ok(restaurantDto);
-    }
-
-    @GetMapping("/getRestaurantByOrderId/{orderId}")
-    public ResponseEntity<RestaurantDto> getRestaurantByOrder(@PathVariable Long orderId){
-        RestaurantDto restaurantDto = restaurantServiceImpl.getRestaurantByOrderId(orderId);
         return ResponseEntity.ok(restaurantDto);
     }
 

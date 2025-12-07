@@ -14,8 +14,7 @@ public class RestaurantDto {
     private String name;
 
     @NotBlank
-    private Long orderId;
-
-    @NotBlank
     private String area;
+
+    private MenuCardDto menuCardDto;
 }
