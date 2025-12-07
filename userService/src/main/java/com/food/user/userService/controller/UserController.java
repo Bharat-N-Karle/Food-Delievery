@@ -3,7 +3,6 @@ package com.food.user.userService.controller;
 import com.food.user.userService.dto.UserDto;
 import com.food.user.userService.dto.UserWithOrders;
 import com.food.user.userService.service.UserServiceImpl;
-import jakarta.ws.rs.Path;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

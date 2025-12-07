@@ -13,5 +13,4 @@ public interface RestaurantService {
 
     List<RestaurantDto> getAllRestaurant();
 
-    RestaurantDto getRestaurantByOrderId(Long orderId);
 }
