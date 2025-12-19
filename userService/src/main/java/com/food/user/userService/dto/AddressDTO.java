@@ -1,6 +1,5 @@
 package com.food.user.userService.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,17 +7,19 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class AddressDTO {
 
-    @NotBlank
     private Long id;
 
-    @NotBlank
-    private String name;
+    private String addressLine1;
 
-    @NotBlank
+    private String addressLine2;
+
     private String city;
 
-    @NotBlank
-    private Integer age;
+    private String state;
+
+    private Long postalCode;
+
+    private boolean isDefault;
 }

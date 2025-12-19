@@ -2,10 +2,10 @@ package com.food.user.userService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Service;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@Service
+@EnableFeignClients
 public class UserServiceApplication {
 
 	public static void main(String[] args) {

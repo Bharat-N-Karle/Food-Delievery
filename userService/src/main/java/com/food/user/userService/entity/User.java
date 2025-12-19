@@ -5,11 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "tbl_user")
+@Table(name = "USER_TABLE")
 public class User {
 
     @Id
@@ -17,12 +20,30 @@ public class User {
     @Column(name = "UserID")
     private Long id;
 
-    @Column(name = "UserName")
-    private String name;
+    private String firstName;
 
-    @Column(name = "City")
-    private String city;
+    private String lastName;
+
+    @Column(name = "UserName")
+    private String userName;
+
+    private String email;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "MobileNumber")
+    private Long phoneNumber;
 
     @Column(name = "UserAge")
     private Integer age;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> addresses = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "UserID"),
+            inverseJoinColumns = @JoinColumn(name = "roleId"))
+    private List<Role> roles = new ArrayList<>();
 }
