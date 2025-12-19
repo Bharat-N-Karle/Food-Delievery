@@ -1,63 +1,62 @@
 package com.food.user.userService.controller;
 
-import com.food.user.userService.dto.UserDto;
-import com.food.user.userService.dto.UserWithOrders;
-import com.food.user.userService.service.UserServiceImpl;
+import com.food.user.userService.dto.UserRequest;
+import com.food.user.userService.dto.UserResponse;
+import com.food.user.userService.service.serviceInterface.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Service
-@ResponseBody
-@RequestMapping("/api/user")
+@RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/user")
 public class UserController {
 
-    private final UserServiceImpl userServiceImpl;
+    private final UserService userService;
 
     @PostMapping("/addUser")
-    public ResponseEntity<UserDto> addUser(@RequestBody
-                                               UserDto userDto){
-        userServiceImpl.createUser(userDto);
-        return ResponseEntity.status(201).body(userDto);
+    public ResponseEntity<UserResponse> addUser(@RequestBody UserRequest userRequest){
+        return ResponseEntity
+                .status(201)
+                .body(userService.createUser(userRequest));
     }
 
-    @GetMapping("/getUser/{id}")
-    public ResponseEntity<UserDto> getUser(@PathVariable
-                                               Long id){
-        UserDto userDto = userServiceImpl.getUser(id);
-        return ResponseEntity.ok(userDto);
+    /*@PutMapping("/update/{userId}")
+    public ResponseEntity<UserResponse> updateData(@PathVariable Long userId, @RequestBody UserRequest userRequest){
+        return ResponseEntity
+                .status(200)
+                .body(userService.updateUser(userId,userRequest));
+    }*/
+
+    @GetMapping("/getUserById/{userId}")
+    public ResponseEntity<UserResponse> userById(@PathVariable Long userId){
+        return ResponseEntity
+                .status(200)
+                .body(userService.getUserById(userId));
     }
 
-    @GetMapping("/getUsersOrder/{id}")
-    public ResponseEntity<UserWithOrders> getUsersAllOrder(@PathVariable Long id){
-        UserWithOrders userWithOrders = userServiceImpl.getUserWithOrders(id);
-        return ResponseEntity.ok(userWithOrders);
+    @GetMapping("/getUser/{userName}")
+    public ResponseEntity<UserResponse> userByUserName(@PathVariable String userName){
+        return ResponseEntity
+                .status(200)
+                .body(userService.getUserByUsername(userName)
+                );
     }
 
     @GetMapping("/getAllUsers")
-    public ResponseEntity<List<UserDto>> getAllUsers(){
-        return ResponseEntity.ok(userServiceImpl.getAllUsers());
+    public ResponseEntity<List<UserResponse>> allUsers(){
+        return ResponseEntity
+                .status(200)
+                .body(userService.getAllUsers());
     }
 
-    @DeleteMapping("/deleteUser/{id}")
-    public ResponseEntity<String> deleteUserById(@PathVariable Long id){
-        userServiceImpl.deleteUser(id);
-        return ResponseEntity.ok("User with given id deleted");
-    }
-
-    @DeleteMapping("/deleteAllUsers")
-    public ResponseEntity<String> deleteAllUsers(){
-        userServiceImpl.deleteAllUsers();
-        return ResponseEntity.ok("All Users Deleted");
-    }
-
-    @PutMapping("/updateOrCreate/{id}")
-    public ResponseEntity<UserDto> updateOrCreate(@PathVariable Long id ,@RequestBody UserDto userDto){
-        userServiceImpl.updateOrCreateNew(id,userDto);
-        return ResponseEntity.ok(userDto);
+    @DeleteMapping("/deleteUser/{userId}")
+    public ResponseEntity<String> deleteUser(@PathVariable Long userId){
+        userService.deleteUser(userId);
+        return ResponseEntity
+                .status(200)
+                .body("user deleted SuccessFully");
     }
 }
