@@ -37,10 +37,8 @@ public class AppConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
         http
                 .csrf(AbstractHttpConfigurer::disable)
-
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/api/login/**"
@@ -52,9 +50,7 @@ public class AppConfig {
                                 "/api/user/getAllUsers/**").hasRole("USER")
                         .anyRequest().authenticated()
                 )
-
                 .httpBasic(Customizer.withDefaults())
-
                 .userDetailsService(customUserDetailsService);
         return http.build();
     }

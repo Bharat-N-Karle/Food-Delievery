@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class MenuCardItemDto {
+    private Long id;
     private String itemName;
     private String description;
     private String category;

@@ -22,8 +22,8 @@ public class MapperClass {
     private final PasswordEncoder passwordEncoder;
 
     public User userRequestToUser(UserRequest userRequest) {
-        User user = modelMapper.map(userRequest, User.class);
 
+        User user = modelMapper.map(userRequest, User.class);
         user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         List<Address> addresses = Optional.ofNullable(userRequest.getAddressDTOS())
                 .orElse(List.of())
@@ -47,8 +47,8 @@ public class MapperClass {
     }
 
     public UserResponse userToUserResponse(User user) {
-        UserResponse response = modelMapper.map(user, UserResponse.class);
 
+        UserResponse response = modelMapper.map(user, UserResponse.class);
         List<AddressDTO> addressDto = Optional.ofNullable(user.getAddresses())
                 .orElse(List.of())
                 .stream()

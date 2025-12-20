@@ -4,12 +4,9 @@ import com.food.restaurant.restaurantService.dto.MenuCardDto;
 import com.food.restaurant.restaurantService.dto.RestaurantDto;
 import com.food.restaurant.restaurantService.entity.MenuCard;
 import com.food.restaurant.restaurantService.entity.Restaurant;
-import org.bouncycastle.math.raw.Mod;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.client.RestClient;
-import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class AppConfig {
@@ -24,8 +21,5 @@ public class AppConfig {
         return modelMapper;
     }
 
-    @Bean
-    public RestClient restClient(){
-        return RestClient.builder().build();
-    }
+
 }
