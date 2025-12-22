@@ -1,6 +1,5 @@
 package com.food.orders.ordersService.entity;
 
-import com.food.orders.ordersService.enumPa.OrderStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,20 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "OrderTable")
-public class Order {
+@Table(name = "CartTable")
+public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderId;
+    private Long id;
 
-    private Long userId;
-
-    private Double amount;
-
-    @Enumerated(EnumType.STRING)
-    private OrderStatus orderStatus;
-
-
-
+    private Long menuCardItemId;
 }

@@ -1,17 +1,20 @@
 package com.food.orders.ordersService.service.serviceInter;
 
-import com.food.orders.ordersService.dto.MenuCardItemDto;
+
+import com.food.orders.ordersService.dto.OrderDto;
+import com.food.orders.ordersService.enumPa.OrderStatus;
 
 import java.util.List;
 
 public interface OrderService {
 
-    void addToCart(Long menuItemId);
+    String placedOrder();
 
-    String deleteFromCart(Long id);
+    String createOrder(OrderDto orderDto);
 
-    MenuCardItemDto getMenuCardItem(Long menuId, String itemName);
+    List<OrderDto> getAllOrders();
 
-    List<MenuCardItemDto> getAllItemsFromCart();
+    OrderDto getOrderByStatus(OrderStatus orderStatus);
 
+    OrderDto updateOrderStatus(Long id, OrderStatus orderStatus);
 }

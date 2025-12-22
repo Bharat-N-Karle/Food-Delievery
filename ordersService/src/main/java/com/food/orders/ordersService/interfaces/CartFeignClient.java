@@ -7,17 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(name = "RESTAURANTSERVICE")
-
-public interface OrderFeignClient {
-
-    @GetMapping("/api/restaurant/getRestaurant/{id}/{itemName}")
-    ResponseEntity<MenuCardItemDto> getMenuCardItem(
-            @PathVariable Long id,
-            @PathVariable String itemName
-    );
+public interface CartFeignClient {
 
     @GetMapping("/api/restaurant/getMenuItem/{id}")
-    public ResponseEntity<MenuCardItemDto> getMenuCardItem(
-            @PathVariable Long id
+    ResponseEntity<MenuCardItemDto> getMenuCardItem(
+            @PathVariable("id") Long id
     );
 }

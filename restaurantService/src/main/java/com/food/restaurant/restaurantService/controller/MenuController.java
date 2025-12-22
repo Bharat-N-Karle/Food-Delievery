@@ -29,7 +29,7 @@ public class MenuController {
 
     @GetMapping("/getMenuItem/{id}")
     public ResponseEntity<MenuCardItemDto> getMenuCardItem(
-            @PathVariable Long id
+            @PathVariable("id") Long id
     ){
         MenuCardItemDto menuCardItem =
                 menuCardItemService

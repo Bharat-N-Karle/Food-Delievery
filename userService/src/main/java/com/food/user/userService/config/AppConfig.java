@@ -45,9 +45,9 @@ public class AppConfig {
                         ).permitAll()
                         .requestMatchers(
                                 "/api/hello/**"
-                        ).hasRole("CUSTOMER")
+                            ).hasRole("CUSTOMER")
                         .requestMatchers(
-                                "/api/user/getAllUsers/**").hasRole("USER")
+                                "/api/user/getAllUsers/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
