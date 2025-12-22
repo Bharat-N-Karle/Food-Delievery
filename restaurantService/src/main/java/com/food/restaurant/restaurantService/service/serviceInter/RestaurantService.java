@@ -1,8 +1,6 @@
 package com.food.restaurant.restaurantService.service.serviceInter;
 
 import com.food.restaurant.restaurantService.dto.RestaurantDto;
-import com.food.restaurant.restaurantService.entity.Restaurant;
-
 import java.util.List;
 
 public interface RestaurantService {
@@ -13,4 +11,5 @@ public interface RestaurantService {
 
     List<RestaurantDto> getAllRestaurant();
 
+    RestaurantDto getRestaurantByName(String name);
 }

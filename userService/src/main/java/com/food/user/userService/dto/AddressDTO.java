@@ -21,5 +21,5 @@ public class AddressDTO {
 
     private Long postalCode;
 
-    private boolean isDefault;
+    private Boolean isDefault;
 }

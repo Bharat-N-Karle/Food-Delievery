@@ -38,7 +38,6 @@ public class MenuCardItem {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    // Many Items → One MenuCard
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "menu_card_id")
     private MenuCard menuCard;

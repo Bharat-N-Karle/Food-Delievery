@@ -16,13 +16,6 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/addUser")
-    public ResponseEntity<UserResponse> addUser(@RequestBody UserRequest userRequest){
-        return ResponseEntity
-                .status(201)
-                .body(userService.createUser(userRequest));
-    }
-
     /*@PutMapping("/update/{userId}")
     public ResponseEntity<UserResponse> updateData(@PathVariable Long userId, @RequestBody UserRequest userRequest){
         return ResponseEntity
